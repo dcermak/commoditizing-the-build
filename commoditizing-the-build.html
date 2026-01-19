@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Commoditizing the Build</title>
+<meta name="author" content="Dan Čermák"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"/>
+
+<link rel="stylesheet" href="./custom-style.css"/>
+<link rel="stylesheet" href="./node_modules/reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './node_modules/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="title">Commoditizing the Build</h2>
+<p class="subtitle" style="color: Gray;">How Containers Save Our Contributor Base</p>
+<p class="author">Dan Čermák</p>
+<div style="float:left"><a href="https://fosdem.org/2026/" target="_blank"><img src="./media/FOSDEM_logo.svg" height="50px" style="margin-bottom:-12px"/> FOSDEM 2026</a></div>
+<div style="float:right;font-size:35px;"><p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a></p></div>
+</section>
+<p>
+ <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>
+</p>
+<section>
+<section id="slide-org874ddad">
+<h2 id="org874ddad">who -u</h2>
+<p>
+Dan Čermák
+</p>
+
+<p>
+ <div style="float:center">
+ <table class="who-table">
+ <tr><td><i class="fab fa-suse"></i></td><td> Fullstack Developer @SUSE</td></tr>
+ <tr><td><i class="fab fa-fedora"></i></td><td> i3 SIG, Package maintainer</td></tr>
+ <tr><td><i class="far fa-heart"></i></td><td> Developer Tools, Testing and Documentation, Home Automation</td></tr>
+ <tr></tr>
+ <tr></tr>
+ <tr><td><i class="fa-solid fa-globe"></i></td><td> <a href="https://dancermak.name/">https://dancermak.name</a></td></tr>
+ <tr><td><i class="fab fa-github"></i></td><td> <a href="https://github.com/dcermak/">dcermak</a></td></tr>
+ <tr><td><i class="fab fa-mastodon"></i></td><td> <a href="https://mastodon.social/@Defolos">@Defolos@mastodon.social</a></td></tr>
+ <tr><td><i class="fab fa-bluesky"></i></td><td> <a href="https://bsky.app/profile/defolos.bsky.social">@defolos.bsky.social</a></td></tr>
+ </table>
+ </div>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org406edb6">
+<h2 id="org406edb6">outline</h2>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge06f366">
+<h2 id="orge06f366">Where are we?</h2>
+<aside class="notes">
+<ul>
+<li>our contributor base is aging, look around (ML, chat, etc), it's the same people</li>
+
+</ul>
+
+</aside>
+
+<p class="fragment (appear)">
+<img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>
+</p>
+</section>
+<section id="slide-org5da166e">
+<h3 id="org5da166e">But why?</h3>
+<ul>
+<li class="fragment appear">our tooling isn't cool anymore</li>
+<li class="fragment appear">LLMs are not trained on our tooling</li>
+<li class="fragment appear">building a distribution is hard™</li>
+
+</ul>
+
+<p class="fragment (appear)">
+<img src="./media/linux-distro-build-pipeline.svg" height="500px"/>
+</p>
+
+</section>
+<section id="slide-org5da166e-split">
+
+<p class="fragment (appear)">
+<img src="./media/from-source-to-image.svg" height="500px"/>
+</p>
+</section>
+<section id="slide-org5713903">
+<h3 id="org5713903">Omarchy</h3>
+<aside class="notes">
+<ul>
+<li>very popular linux spin based on arch</li>
+<li>super opinionated Hyprland setup</li>
+<li>mostly shell scripts</li>
+
+</ul>
+<p>
+&rarr; too simple for a general purpose distribution
+</p>
+
+</aside>
+
+<p class="fragment (appear)">
+<img src="./media/omarchy.png"/>
+</p>
+
+<p class="fragment (appear)">
+<img src="./media/omarchy-github-languages.png"/>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgf961620">
+<h2 id="orgf961620">Universal Blue</h2>
+<blockquote >
+<p>
+This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop &#x2013; uBlue - Who We Are
+</p>
+</blockquote>
+</section>
+<section id="slide-org2b0a6f9">
+<h3 id="org2b0a6f9">Tech Stack</h3>
+
+</section>
+<section id="slide-org8f9fc73">
+<h3 id="org8f9fc73"><span class="todo TODO">TODO</span> Contributors</h3>
+<p class="fragment (appear)">
+<img src="./media/ublue-contributors-2024.png"/>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org89e737b">
+<h2 id="org89e737b">Meet Devs where they are</h2>
+<ul>
+<li class="fragment appear">Developers know Dockerfiles</li>
+
+</ul>
+</section>
+<section id="slide-org64337de">
+<h3 id="org64337de">What's a package?</h3>
+<p class="fragment (appear)">
+<img src="./media/rpm-package.svg"/>
+</p>
+</section>
+<section id="slide-org13fa31d">
+<h3 id="org13fa31d">The Build Recipe</h3>
+<div class="org-src-container">
+
+<pre   ><code class="spec" >Summary:	Extensible editor for structured binary data
+Name:		poke
+Version:	4.3
+Release:	%autorelease
+
+License:	GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later
+URL:		https://www.jemarch.net/poke
+Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+Source1:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+
+BuildRequires:	emacs
+BuildRequires:	gcc
+BuildRequires:	gc-devel
+
+%description
+GNU poke is an interactive, extensible editor for binary data. Not
+limited to editing basic entities such as bits and bytes, it provides
+a full-fledged procedural, interactive programming language designed
+to describe data structures and to operate on them.
+
+%prep
+%{gpgverify} --keyring='%{SOURCE2}' --signature='%{SOURCE1}' --data='%{SOURCE0}'
+%autosetup
+
+%build
+%define _lto_cflags %{nil}
+%configure
+%make_build
+
+%check
+make check
+
+%install
+%{make_install}
+rm -f %{buildroot}/%{_infodir}/dir
+rm -f %{buildroot}%{_libdir}/libpoke.a
+rm -f %{buildroot}%{_libdir}/libpoke.la
+
+%files
+%{_bindir}/%{name}
+%{_bindir}/poked
+%{_bindir}/pokefmt
+%{_bindir}/pk-bin2poke
+%{_bindir}/pk-jojopatch
+%{_bindir}/pk-strings
+%{_infodir}/poke.info*.*
+%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/poked.1*
+%{_mandir}/man1/pokefmt.1*
+%doc AUTHORS ChangeLog NEWS README TODO
+%license COPYING
+
+%changelog
+%autochangelog
+</code></pre>
+</div>
+</section>
+<section id="slide-org2e1617c">
+<h3 id="org2e1617c">Is it that much different to this?</h3>
+<div class="org-src-container">
+
+<pre   ><code class="Dockerfile" >ARG VERSION=4.3
+ARG DIST
+FROM fedora-rpm-buildroot:${DIST} as buildrequires
+
+WORKDIR /src/
+COPY poke-${VERSION}.tar.gz .
+COPY poke-${VERSION}.tar.gz.sig .
+
+RUN dnf -y install emacs gcc gc-devel nbdkit make
+
+FROM localhost/poke-buildrequires as builder
+
+RUN rpmdev-extract poke-${VERSION}.tar.gz
+WORKDIR /src/poke-${VERSION}
+RUN ./configure; \
+    make build; \
+    make check
+
+RUN make install PREFIX=/usr/local
+
+FROM fedora-rpm-buildroot:${DIST} as poke
+
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.url="https://www.jemarch.net/poke"
+LABEL org.opencontainers.image.title="Extensible editor for structured binary data"
+LABEL org.opencontainers.image.description="GNU poke is an interactive, extensible editor for binary data."
+LABEL org.opencontainers.image.licenses="GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later"
+
+COPY --from=builder /usr/local/bin /usr/bin
+</code></pre>
+</div>
+</section>
+<section id="slide-org2042d25">
+<h3 id="org2042d25">Introducing: <a href="https://github.com/dcermak/roci">roci</a></h3>
+</section>
+</section>
+<section>
+<section id="slide-orga3109e7">
+<h2 id="orga3109e7">Going further</h2>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org545811e">
+<h2 id="org545811e">Questions?</h2>
+<p class="fragment (appear)">
+Answers!
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./node_modules/reveal.js/dist/reveal.js"></script>
+<script src="./node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="./node_modules/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealHighlight, RevealNotes, history],
+transition: 'none', hash: true
+});
+
+</script>
+<script src="./node_modules/highlightjs-rpm-specfile/rpm-specfile.js"></script>
+</body>
+</html>
