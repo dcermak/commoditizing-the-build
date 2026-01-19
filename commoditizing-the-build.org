@@ -1,0 +1,221 @@
+# -*- org-confirm-babel-evaluate: nil; -*-
+#+AUTHOR: Dan Čermák
+#+DATE: February 1, 2026
+#+EMAIL: dan.cermak@posteo.net
+#+TITLE: Commoditizing the Build
+#+SUBTITLE: How Containers Save Our Contributor Base
+
+#+REVEAL_ROOT: ./node_modules/reveal.js/
+#+REVEAL_THEME: simple
+#+REVEAL_PLUGINS: (highlight notes history)
+#+OPTIONS: toc:nil
+#+REVEAL_DEFAULT_FRAG_STYLE: appear
+#+REVEAL_INIT_OPTIONS: transition: 'none', hash: true
+#+OPTIONS: num:nil toc:nil center:nil reveal_title_slide:nil
+#+REVEAL_EXTRA_CSS: ./node_modules/@fortawesome/fontawesome-free/css/all.min.css
+#+REVEAL_EXTRA_CSS: ./custom-style.css
+#+REVEAL_HIGHLIGHT_CSS: ./node_modules/reveal.js/plugin/highlight/zenburn.css
+#+REVEAL_EXTRA_SCRIPT_SRC: ./node_modules/highlightjs-rpm-specfile/rpm-specfile.js
+
+#+REVEAL_TITLE_SLIDE: <h2 class="title">%t</h2>
+#+REVEAL_TITLE_SLIDE: <p class="subtitle" style="color: Gray;">%s</p>
+#+REVEAL_TITLE_SLIDE: <p class="author">%a</p>
+#+REVEAL_TITLE_SLIDE: <div style="float:left"><a href="https://fosdem.org/2026/" target="_blank"><img src="./media/FOSDEM_logo.svg" height="50px" style="margin-bottom:-12px"/> FOSDEM 2026</a></div>
+#+REVEAL_TITLE_SLIDE: <div style="float:right;font-size:35px;"><p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+#+REVEAL_TITLE_SLIDE: CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a></p></div>
+
+@@html: <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>@@
+
+
+* who -u
+
+Dan Čermák
+
+@@html: <div style="float:center">@@
+@@html: <table class="who-table">@@
+@@html: <tr><td><i class="fab fa-suse"></i></td><td> Fullstack Developer @SUSE</td></tr>@@
+@@html: <tr><td><i class="fab fa-fedora"></i></td><td> i3 SIG, Package maintainer</td></tr>@@
+@@html: <tr><td><i class="far fa-heart"></i></td><td> Developer Tools, Testing and Documentation, Home Automation</td></tr>@@
+@@html: <tr></tr>@@
+@@html: <tr></tr>@@
+@@html: <tr><td><i class="fa-solid fa-globe"></i></td><td> <a href="https://dancermak.name/">https://dancermak.name</a></td></tr>@@
+@@html: <tr><td><i class="fab fa-github"></i></td><td> <a href="https://github.com/dcermak/">dcermak</a></td></tr>@@
+@@html: <tr><td><i class="fab fa-mastodon"></i></td><td> <a href="https://mastodon.social/@Defolos">@Defolos@mastodon.social</a></td></tr>@@
+@@html: <tr><td><i class="fab fa-bluesky"></i></td><td> <a href="https://bsky.app/profile/defolos.bsky.social">@defolos.bsky.social</a></td></tr>@@
+@@html: </table>@@
+@@html: </div>@@
+
+
+* outline
+
+
+* Where are we?
+
+#+begin_notes
+- our contributor base is aging, look around (ML, chat, etc), it's the same people
+#+end_notes
+
+# source: https://web.archive.org/web/20250222084312/https://blog.tidelift.com/the-open-source-maintainer-community-is-getting-grayer
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>@@
+
+** But why?
+
+#+ATTR_REVEAL: :frag (appear)
+- our tooling isn't cool anymore
+- LLMs are not trained on our tooling
+- building a distribution is hard™
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/linux-distro-build-pipeline.svg" height="500px"/>@@
+
+#+REVEAL: split
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/from-source-to-image.svg" height="500px"/>@@
+
+** Omarchy
+
+#+begin_notes
+- very popular linux spin based on arch
+- super opinionated Hyprland setup
+- mostly shell scripts
+\rightarrow too simple for a general purpose distribution
+#+end_notes
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/omarchy.png"/>@@
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/omarchy-github-languages.png"/>@@
+
+* Universal Blue
+
+# from https://universal-blue.org/#who
+#+begin_quote
+This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop -- uBlue - Who We Are
+#+end_quote
+
+
+** Tech Stack
+
+** TODO Contributors
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/ublue-contributors-2024.png"/>@@
+
+
+* Meet Devs where they are
+
+#+ATTR_REVEAL: :frag (appear)
+- Developers know Dockerfiles
+
+** What's a package?
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/rpm-package.svg"/>@@
+
+** The Build Recipe
+
+#+begin_src spec
+Summary:	Extensible editor for structured binary data
+Name:		poke
+Version:	4.3
+Release:	%autorelease
+
+License:	GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later
+URL:		https://www.jemarch.net/poke
+Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+Source1:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+
+BuildRequires:	emacs
+BuildRequires:	gcc
+BuildRequires:	gc-devel
+
+%description
+GNU poke is an interactive, extensible editor for binary data. Not
+limited to editing basic entities such as bits and bytes, it provides
+a full-fledged procedural, interactive programming language designed
+to describe data structures and to operate on them.
+
+%prep
+%{gpgverify} --keyring='%{SOURCE2}' --signature='%{SOURCE1}' --data='%{SOURCE0}'
+%autosetup
+
+%build
+%define _lto_cflags %{nil}
+%configure
+%make_build
+
+%check
+make check
+
+%install
+%{make_install}
+rm -f %{buildroot}/%{_infodir}/dir
+rm -f %{buildroot}%{_libdir}/libpoke.a
+rm -f %{buildroot}%{_libdir}/libpoke.la
+
+%files
+%{_bindir}/%{name}
+%{_bindir}/poked
+%{_bindir}/pokefmt
+%{_bindir}/pk-bin2poke
+%{_bindir}/pk-jojopatch
+%{_bindir}/pk-strings
+%{_infodir}/poke.info*.*
+%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/poked.1*
+%{_mandir}/man1/pokefmt.1*
+%doc AUTHORS ChangeLog NEWS README TODO
+%license COPYING
+
+%changelog
+%autochangelog
+#+end_src
+
+** Is it that much different to this?
+
+#+begin_src Dockerfile
+ARG VERSION=4.3
+ARG DIST
+FROM fedora-rpm-buildroot:${DIST} as buildrequires
+
+WORKDIR /src/
+COPY poke-${VERSION}.tar.gz .
+COPY poke-${VERSION}.tar.gz.sig .
+
+RUN dnf -y install emacs gcc gc-devel nbdkit make
+
+FROM localhost/poke-buildrequires as builder
+
+RUN rpmdev-extract poke-${VERSION}.tar.gz
+WORKDIR /src/poke-${VERSION}
+RUN ./configure; \
+    make build; \
+    make check
+
+RUN make install PREFIX=/usr/local
+
+FROM fedora-rpm-buildroot:${DIST} as poke
+
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.url="https://www.jemarch.net/poke"
+LABEL org.opencontainers.image.title="Extensible editor for structured binary data"
+LABEL org.opencontainers.image.description="GNU poke is an interactive, extensible editor for binary data."
+LABEL org.opencontainers.image.licenses="GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later"
+
+COPY --from=builder /usr/local/bin /usr/bin
+#+end_src
+
+** Introducing: [[https://github.com/dcermak/roci][roci]]
+
+
+* Going further
+
+
+
+* Questions?
+
+#+ATTR_REVEAL: :frag (appear)
+Answers!

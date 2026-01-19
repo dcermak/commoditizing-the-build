@@ -1,0 +1,18 @@
+* Commoditizing the Build
+
+This repository contains the slides for the presentation "Commoditizing the Build" held at FOSDEM 2026.
+
+You can find the rendered slides here: [[https://dcermak.github.io/commoditizing-the-build/commoditizing-the-build.html][dcermak.github.io/commoditizing-the-build]].
+
+
+** Building the slides
+
+You can create the html slides yourself from within Emacs by opening the
+[[./commoditizing-the-build.org]] file, launching =org-mode= and executing ~(require
+'ox-reveal)~ (you might have to install =ox-reveal= beforehand). Then export the
+org file to reveal.js (this is by default bound to the keychord =C-c C-e R R=).
+
+If you are not a Emacs user, then just install Emacs and execute:
+#+begin_src bash
+emacs commoditizing-the-build.org -Q --batch -l export-init.el -f org-reveal-export-to-html --kill
+#+end_src

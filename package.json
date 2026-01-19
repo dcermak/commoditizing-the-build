@@ -1,0 +1,14 @@
+{
+  "name": "commoditizing-the-build",
+  "version": "0.0.1",
+  "description": "Slides for the presentation Commoditizing the Build",
+  "author": "Dan Čermák <dcermak@suse.com>",
+  "license": "CC-BY-SA-4.0",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "reveal.js": "^5.2.1"
+  },
+  "dependencies": {
+    "highlightjs-rpm-specfile": "^1.0.0"
+  }
+}
