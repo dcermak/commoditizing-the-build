@@ -42,8 +42,8 @@ CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-comm
  <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>
 </p>
 <section>
-<section id="slide-org45929da">
-<h2 id="org45929da">who -u</h2>
+<section id="slide-orga2f3e7a">
+<h2 id="orga2f3e7a">who -u</h2>
 <p>
 Dan Čermák
 </p>
@@ -66,15 +66,15 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-orgdd620ca">
-<h2 id="orgdd620ca">outline</h2>
+<section id="slide-org20e1d22">
+<h2 id="org20e1d22">outline</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org54ca95d">
-<h2 id="org54ca95d">Where are we?</h2>
+<section id="slide-org54fcdea">
+<h2 id="org54fcdea">Where are we?</h2>
 <aside class="notes">
 <ul>
 <li>our contributor base is aging, look around (ML, chat, etc), it's the same people</li>
@@ -87,8 +87,8 @@ Dan Čermák
 <img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>
 </p>
 </section>
-<section id="slide-org012d890">
-<h3 id="org012d890">But why?</h3>
+<section id="slide-org2a18a25">
+<h3 id="org2a18a25">But why?</h3>
 <ul>
 <li class="fragment appear">our tooling isn't cool anymore</li>
 <li class="fragment appear">LLMs are not trained on our tooling</li>
@@ -101,14 +101,14 @@ Dan Čermák
 </p>
 
 </section>
-<section id="slide-org012d890-split">
+<section id="slide-org2a18a25-split">
 
 <p class="fragment (appear)">
 <img src="./media/from-source-to-image.svg" height="500px"/>
 </p>
 </section>
-<section id="slide-org58b42fc">
-<h3 id="org58b42fc">Omarchy</h3>
+<section id="slide-org3993a5e">
+<h3 id="org3993a5e">Omarchy</h3>
 <aside class="notes">
 <ul>
 <li>very popular linux spin based on arch</li>
@@ -132,44 +132,49 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-org934e15f">
-<h2 id="org934e15f">Universal Blue</h2>
+<section id="slide-org8634e88">
+<h2 id="org8634e88">Universal Blue</h2>
 <blockquote >
 <p>
 This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop &#x2013; uBlue - Who We Are
 </p>
 </blockquote>
 </section>
-<section id="slide-org2a48e5a">
-<h3 id="org2a48e5a">Tech Stack</h3>
+<section id="slide-org2c871f9">
+<h3 id="org2c871f9">Tech Stack</h3>
+<ul>
+<li class="fragment appear"><a href="https://bootc-dev.github.io/bootc/">bootc</a> + <code>Dockerfile</code></li>
+<li class="fragment appear"><i class="fa-brands fa-github"></i> Github</li>
+<li class="fragment appear"><i class="fa-brands fa-github"></i> Github Actions</li>
 
+</ul>
 </section>
-<section id="slide-org44326eb">
-<h3 id="org44326eb"><span class="todo TODO">TODO</span> Contributors</h3>
+<section id="slide-orga8913fa">
+<h3 id="orga8913fa"><span class="todo TODO">TODO</span> Contributors</h3>
 <p class="fragment (appear)">
 <img src="./media/ublue-contributors-2024.png"/>
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgeeefc17">
-<h2 id="orgeeefc17">Meet Devs where they are</h2>
+<section id="slide-org8607069">
+<h2 id="org8607069">Meet Devs where they are</h2>
 <ul>
 <li class="fragment appear">Developers know Dockerfiles</li>
 
 </ul>
 </section>
-<section id="slide-org2df7fe3">
-<h3 id="org2df7fe3">What's a package?</h3>
+<section id="slide-orgdd5e661">
+<h3 id="orgdd5e661">What's a package?</h3>
 <p class="fragment (appear)">
 <img src="./media/rpm-package.svg"/>
 </p>
 </section>
-<section id="slide-org1899aed">
-<h3 id="org1899aed">The Build Recipe</h3>
+<section id="slide-org216c434">
+<h3 id="org216c434">The Build Recipe</h3>
 <div class="org-src-container">
 
-<pre   ><code class="spec" >Summary:	Extensible editor for structured binary data
+<pre  class="fragment (appear)"  ><code class="spec" data-line-numbers='|1-4|5-9|11-13|15-19|21-23|25-28|30-31|33-37|39-51|53-54|'>Summary:	Extensible editor for structured binary data
 Name:		poke
 Version:	4.3
 Release:	%autorelease
@@ -226,11 +231,11 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 </code></pre>
 </div>
 </section>
-<section id="slide-org01679f9">
-<h3 id="org01679f9">Is it that much different to this?</h3>
+<section id="slide-orgcf8e379">
+<h3 id="orgcf8e379"><span class="todo TODO">TODO</span> Is it that much different to this?</h3>
 <div class="org-src-container">
 
-<pre   ><code class="Dockerfile" >ARG VERSION=4.3
+<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='|5-7|9'>ARG VERSION=4.3
 ARG DIST
 FROM fedora-rpm-buildroot:${DIST} as buildrequires
 
@@ -262,21 +267,33 @@ COPY --from=builder /usr/local/bin /usr/bin
 </code></pre>
 </div>
 </section>
-<section id="slide-org644164c">
-<h3 id="org644164c">Introducing: <a href="https://github.com/dcermak/roci">roci</a></h3>
+<section id="slide-org19a02e2">
+<h3 id="org19a02e2">Introducing: <code>roci</code></h3>
+<ul>
+<li class="fragment appear"><i class="fa-brands fa-github"></i> <a href="https://github.com/dcermak/roci">dcermak/roci</a></li>
+
+</ul>
+</section>
+<section id="slide-org1ca53e9">
+<h3 id="org1ca53e9">Issues to tackle</h3>
+<ul>
+<li class="fragment appear">automatic dependencies</li>
+<li class="fragment appear">network isolation</li>
+<li class="fragment appear">reproducible builds</li>
+<li class="fragment appear">macros</li>
+<li class="fragment appear">debuginfo</li>
+
+</ul>
 </section>
 </section>
 <section>
-<section id="slide-org021015d">
-<h2 id="org021015d">Going further</h2>
-
-
-
+<section id="slide-org693c485">
+<h2 id="org693c485">Going further</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgd8e2d6f">
-<h2 id="orgd8e2d6f">Questions?</h2>
+<section id="slide-org7ee6e45">
+<h2 id="org7ee6e45">Questions?</h2>
 <p class="fragment (appear)">
 Answers!
 </p>
