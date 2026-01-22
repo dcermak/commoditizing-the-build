@@ -74,7 +74,7 @@ Dan Čermák
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/from-source-to-image.svg" height="500px"/>@@
 
-** Omarchy
+** TODO Omarchy
 
 #+begin_notes
 - very popular linux spin based on arch
@@ -89,21 +89,31 @@ Dan Čermák
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/omarchy-github-languages.png"/>@@
 
+Community on Github & Discord
+
 * Universal Blue
 
+@@html:<img src="./media/ublue.svg"/>@@
+
 # from https://universal-blue.org/#who
+#+ATTR_REVEAL: :frag (appear)
 #+begin_quote
-This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop -- uBlue - Who We Are
+This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop
 #+end_quote
+uBlue - Who We Are
 
-
-** Tech Stack
+** Stack
 
 #+ATTR_REVEAL: :frag (appear)
 - [[https://bootc-dev.github.io/bootc/][bootc]] + ~Dockerfile~
 - @@html:<i class="fa-brands fa-github"></i>@@ Github
 - @@html:<i class="fa-brands fa-github"></i>@@ Github Actions
 
+#+ATTR_REVEAL: :frag (appear)
+Community on:
+#+ATTR_REVEAL: :frag (appear)
+- @@html:<i class="fa-brands fa-discord"></i>@@ Discord
+- @@html:<i class="fa-brands fa-discourse"></i>@@ Discourse
 
 ** TODO Contributors
 
@@ -181,9 +191,9 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 %autochangelog
 #+end_src
 
-** TODO Is it that much different to this?
+** Is it that much different to this?
 
-#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|5-7|9'
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='1-2|5-7|9|11-17|19|21|23-27|29'
 #+begin_src Dockerfile
 ARG VERSION=4.3
 ARG DIST
@@ -218,20 +228,44 @@ COPY --from=builder /usr/local/bin /usr/bin
 
 ** Introducing: =roci=
 
-#+ATTR_REVEAL: :frag (appear)
-- @@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][dcermak/roci]]
+#+begin_notes
+most pressing problems:
+- network isolation, actually kinda easy to solve, via multistage builds
+- AutoReqProv: rpm's dependency/provides generators. Absolutely required if you don't want packaging to suck. Solved by running =rpmdeps=
+- 
+#+end_notes
 
+@@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][dcermak/roci]]
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/roci-build.svg"/>@@
 
 ** Issues to tackle
 
-#+ATTR_REVEAL: :frag (appear)
-- automatic dependencies
-- network isolation
-- reproducible builds
-- macros
-- debuginfo
+#+begin_notes
+- reproducible builds: kinda important, should be mostly doable by setting =SOURCE_DATE_EPOCH= 🤞
+- macros: huge issue, rpm has
+#+end_notes
 
-* Going further
+#+ATTR_REVEAL: :frag (appear)
+- reproducible builds
+- debuginfo
+- macros
+
+*** Let's talk about macros
+
+
+** What do we gain
+
+#+ATTR_REVEAL: :frag (appear)
+- simplicity
+- builds easier to debug & inspect
+
+** What's an OCI Image
+
+
+
+* Repositories
 
 #+ATTR_REVEAL: :frag (appear)
 
