@@ -42,8 +42,8 @@ CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-comm
  <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>
 </p>
 <section>
-<section id="slide-orga2f3e7a">
-<h2 id="orga2f3e7a">who -u</h2>
+<section id="slide-orgc395524">
+<h2 id="orgc395524">who -u</h2>
 <p>
 Dan Čermák
 </p>
@@ -66,15 +66,15 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-org20e1d22">
-<h2 id="org20e1d22">outline</h2>
+<section id="slide-orgc2fdd23">
+<h2 id="orgc2fdd23">outline</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org54fcdea">
-<h2 id="org54fcdea">Where are we?</h2>
+<section id="slide-org23c2eb2">
+<h2 id="org23c2eb2">Where are we?</h2>
 <aside class="notes">
 <ul>
 <li>our contributor base is aging, look around (ML, chat, etc), it's the same people</li>
@@ -87,8 +87,8 @@ Dan Čermák
 <img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>
 </p>
 </section>
-<section id="slide-org2a18a25">
-<h3 id="org2a18a25">But why?</h3>
+<section id="slide-org72da53b">
+<h3 id="org72da53b">But why?</h3>
 <ul>
 <li class="fragment appear">our tooling isn't cool anymore</li>
 <li class="fragment appear">LLMs are not trained on our tooling</li>
@@ -101,14 +101,14 @@ Dan Čermák
 </p>
 
 </section>
-<section id="slide-org2a18a25-split">
+<section id="slide-org72da53b-split">
 
 <p class="fragment (appear)">
 <img src="./media/from-source-to-image.svg" height="500px"/>
 </p>
 </section>
-<section id="slide-org3993a5e">
-<h3 id="org3993a5e">Omarchy</h3>
+<section id="slide-org754d60b">
+<h3 id="org754d60b"><span class="todo TODO">TODO</span> Omarchy</h3>
 <aside class="notes">
 <ul>
 <li>very popular linux spin based on arch</li>
@@ -129,49 +129,69 @@ Dan Čermák
 <p class="fragment (appear)">
 <img src="./media/omarchy-github-languages.png"/>
 </p>
+
+<p>
+Community on Github &amp; Discord
+</p>
 </section>
 </section>
 <section>
-<section id="slide-org8634e88">
-<h2 id="org8634e88">Universal Blue</h2>
-<blockquote >
+<section id="slide-org64475d1">
+<h2 id="org64475d1">Universal Blue</h2>
 <p>
-This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop &#x2013; uBlue - Who We Are
+<img src="./media/ublue.svg"/>
+</p>
+
+<blockquote  class="fragment (appear)">
+<p>
+This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop
 </p>
 </blockquote>
+<p>
+uBlue - Who We Are
+</p>
 </section>
-<section id="slide-org2c871f9">
-<h3 id="org2c871f9">Tech Stack</h3>
+<section id="slide-orgff6ced4">
+<h3 id="orgff6ced4">Stack</h3>
 <ul>
 <li class="fragment appear"><a href="https://bootc-dev.github.io/bootc/">bootc</a> + <code>Dockerfile</code></li>
 <li class="fragment appear"><i class="fa-brands fa-github"></i> Github</li>
 <li class="fragment appear"><i class="fa-brands fa-github"></i> Github Actions</li>
 
 </ul>
+
+<p class="fragment (appear)">
+Community on:
+</p>
+<ul>
+<li class="fragment appear"><i class="fa-brands fa-discord"></i> Discord</li>
+<li class="fragment appear"><i class="fa-brands fa-discourse"></i> Discourse</li>
+
+</ul>
 </section>
-<section id="slide-orga8913fa">
-<h3 id="orga8913fa"><span class="todo TODO">TODO</span> Contributors</h3>
+<section id="slide-orgc60fbd5">
+<h3 id="orgc60fbd5"><span class="todo TODO">TODO</span> Contributors</h3>
 <p class="fragment (appear)">
 <img src="./media/ublue-contributors-2024.png"/>
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org8607069">
-<h2 id="org8607069">Meet Devs where they are</h2>
+<section id="slide-orgad263e8">
+<h2 id="orgad263e8">Meet Devs where they are</h2>
 <ul>
 <li class="fragment appear">Developers know Dockerfiles</li>
 
 </ul>
 </section>
-<section id="slide-orgdd5e661">
-<h3 id="orgdd5e661">What's a package?</h3>
+<section id="slide-org95d53f8">
+<h3 id="org95d53f8">What's a package?</h3>
 <p class="fragment (appear)">
 <img src="./media/rpm-package.svg"/>
 </p>
 </section>
-<section id="slide-org216c434">
-<h3 id="org216c434">The Build Recipe</h3>
+<section id="slide-org6d471b1">
+<h3 id="org6d471b1">The Build Recipe</h3>
 <div class="org-src-container">
 
 <pre  class="fragment (appear)"  ><code class="spec" data-line-numbers='|1-4|5-9|11-13|15-19|21-23|25-28|30-31|33-37|39-51|53-54|'>Summary:	Extensible editor for structured binary data
@@ -231,11 +251,11 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 </code></pre>
 </div>
 </section>
-<section id="slide-orgcf8e379">
-<h3 id="orgcf8e379"><span class="todo TODO">TODO</span> Is it that much different to this?</h3>
+<section id="slide-org2c52e66">
+<h3 id="org2c52e66">Is it that much different to this?</h3>
 <div class="org-src-container">
 
-<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='|5-7|9'>ARG VERSION=4.3
+<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='1-2|5-7|9|11-17|19|21|23-27|29'>ARG VERSION=4.3
 ARG DIST
 FROM fedora-rpm-buildroot:${DIST} as buildrequires
 
@@ -267,33 +287,70 @@ COPY --from=builder /usr/local/bin /usr/bin
 </code></pre>
 </div>
 </section>
-<section id="slide-org19a02e2">
-<h3 id="org19a02e2">Introducing: <code>roci</code></h3>
+<section id="slide-orge69ab22">
+<h3 id="orge69ab22">Introducing: <code>roci</code></h3>
+<aside class="notes">
+<p>
+most pressing problems:
+</p>
 <ul>
-<li class="fragment appear"><i class="fa-brands fa-github"></i> <a href="https://github.com/dcermak/roci">dcermak/roci</a></li>
+<li>network isolation, actually kinda easy to solve, via multistage builds</li>
+<li>AutoReqProv: rpm's dependency/provides generators. Absolutely required if you don't want packaging to suck. Solved by running <code>rpmdeps</code></li>
+<li></li>
 
 </ul>
+
+</aside>
+
+<p>
+<i class="fa-brands fa-github"></i> <a href="https://github.com/dcermak/roci">dcermak/roci</a>
+</p>
+
+<p class="fragment (appear)">
+<img src="./media/roci-build.svg"/>
+</p>
 </section>
-<section id="slide-org1ca53e9">
-<h3 id="org1ca53e9">Issues to tackle</h3>
+<section id="slide-org1b52cb7">
+<h3 id="org1b52cb7">Issues to tackle</h3>
+<aside class="notes">
 <ul>
-<li class="fragment appear">automatic dependencies</li>
-<li class="fragment appear">network isolation</li>
+<li>reproducible builds: kinda important, should be mostly doable by setting <code>SOURCE_DATE_EPOCH</code> 🤞</li>
+<li>macros: huge issue, rpm has</li>
+
+</ul>
+
+</aside>
+
+<ul>
 <li class="fragment appear">reproducible builds</li>
-<li class="fragment appear">macros</li>
 <li class="fragment appear">debuginfo</li>
+<li class="fragment appear">macros</li>
 
 </ul>
 </section>
+<section id="slide-org8195d9a">
+<h4 id="org8195d9a">Let's talk about macros</h4>
+</section>
+<section id="slide-org55825d8">
+<h3 id="org55825d8">What do we gain</h3>
+<ul>
+<li class="fragment appear">simplicity</li>
+<li class="fragment appear">builds easier to debug &amp; inspect</li>
+
+</ul>
+</section>
+<section id="slide-org0d98c88">
+<h3 id="org0d98c88">What's an OCI Image</h3>
+</section>
 </section>
 <section>
-<section id="slide-org693c485">
-<h2 id="org693c485">Going further</h2>
+<section id="slide-org2dcc6f1">
+<h2 id="org2dcc6f1">Repositories</h2>
 </section>
 </section>
 <section>
-<section id="slide-org7ee6e45">
-<h2 id="org7ee6e45">Questions?</h2>
+<section id="slide-orgd3f544b">
+<h2 id="orgd3f544b">Questions?</h2>
 <p class="fragment (appear)">
 Answers!
 </p>
