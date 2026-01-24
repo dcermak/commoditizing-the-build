@@ -7,7 +7,7 @@
    viewBox="0 0 290.2673 93.858421"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    sodipodi:docname="from-source-to-image.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,11 +26,11 @@
      inkscape:document-units="mm"
      inkscape:zoom="1.4954495"
      inkscape:cx="523.58839"
-     inkscape:cy="142.76644"
-     inkscape:window-width="2556"
-     inkscape:window-height="1396"
-     inkscape:window-x="1920"
-     inkscape:window-y="20"
+     inkscape:cy="143.10079"
+     inkscape:window-width="2560"
+     inkscape:window-height="1373"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -1371,14 +1371,14 @@
     <text
        xml:space="preserve"
        style="font-size:7.05556px;line-height:1.25;font-family:'Fira Code';-inkscape-font-specification:'Fira Code';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffffff;stroke-width:0.396875"
-       x="148.86374"
-       y="72.797958"
+       x="133.47121"
+       y="74.036438"
        id="text1-61"><tspan
          sodipodi:role="line"
          id="tspan1-29"
          style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0.396875"
-         x="148.86374"
-         y="72.797958">Magic?</tspan></text>
+         x="133.47121"
+         y="74.036438">Arcane Magic</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;line-height:1.25;font-family:'Fira Code';-inkscape-font-specification:'Fira Code';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;fill:#ffffff;stroke-width:0.396875"
@@ -1941,5 +1941,27 @@
        d="m 234.425,81.732618 a 5.5707052,5.5707052 0 1 1 11.1414,0 5.5707052,5.5707052 0 1 1 -11.1414,0 z m 5.5707,0.696335 a 0.69633816,0.69633816 0 1 1 0,-1.39267 0.69633816,0.69633816 0 1 1 0,1.39267 z m -2.08901,-0.696335 a 2.0890145,2.0890145 0 1 0 4.17802,0 2.0890145,2.0890145 0 1 0 -4.17802,0 z m -1.39268,-0.348171 c 0,-0.761616 0.38081,-1.547173 0.98358,-2.149943 0.60277,-0.602767 1.38832,-0.983577 2.14994,-0.983577 0.19149,0 0.34817,-0.156677 0.34817,-0.348169 0,-0.191493 -0.15668,-0.348169 -0.34817,-0.348169 -0.98793,0 -1.94104,0.48526 -2.64391,1.18595 -0.70286,0.70069 -1.18595,1.655983 -1.18595,2.643908 0,0.191493 0.15668,0.348171 0.34817,0.348171 0.19149,0 0.34817,-0.156678 0.34817,-0.348171 z"
        id="path1-0"
        style="stroke-width:0.0217605" />
+    <text
+       xml:space="preserve"
+       style="font-size:25.4px;line-height:1.1;font-family:Sans;-inkscape-font-specification:'Sans, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#252b4b;stroke-width:0.0441854;stroke-linecap:round"
+       x="156.62022"
+       y="39.368855"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';stroke-width:0.0441854"
+         x="156.62022"
+         y="39.368855" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;line-height:1.1;font-family:Sans;-inkscape-font-specification:Sans;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#252b4b;stroke-width:0.0441854;stroke-linecap:round"
+       x="112.03497"
+       y="29.284094"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:0.0441854"
+         x="112.03497"
+         y="29.284094" /></text>
   </g>
 </svg>

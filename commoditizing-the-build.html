@@ -42,8 +42,8 @@ CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-comm
  <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>
 </p>
 <section>
-<section id="slide-orgc395524">
-<h2 id="orgc395524">who -u</h2>
+<section id="slide-orgd00621f">
+<h2 id="orgd00621f">who -u</h2>
 <p>
 Dan Čermák
 </p>
@@ -66,18 +66,19 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-orgc2fdd23">
-<h2 id="orgc2fdd23">outline</h2>
+<section id="slide-orgf9a7032">
+<h2 id="orgf9a7032">outline</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org23c2eb2">
-<h2 id="org23c2eb2">Where are we?</h2>
+<section id="slide-org6952299">
+<h2 id="org6952299">Where are we?</h2>
 <aside class="notes">
 <ul>
-<li>our contributor base is aging, look around (ML, chat, etc), it's the same people</li>
+<li>our contributor base is aging, look around (ML, chat, etc), it's the same people, just getting older</li>
+<li>so how does our developer cohort look like: let's start with stackoverflow dev</li>
 
 </ul>
 
@@ -86,32 +87,94 @@ Dan Čermák
 <p class="fragment (appear)">
 <img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>
 </p>
+
 </section>
-<section id="slide-org72da53b">
-<h3 id="org72da53b">But why?</h3>
+<section id="slide-org6952299-split">
+
+<p>
+<img src="./media/stackoverflow_distribution.svg" height="500px"/>
+</p>
+
+</section>
+<section id="slide-org6952299-split">
+
+<p>
+<img src="./media/linux_foundation_distribution.svg" height="500px"/>
+</p>
+
+</section>
+<section id="slide-org6952299-split">
+
+<p>
+<img src="./media/debian_distribution.svg" height="500px"/>
+</p>
+
+</section>
+<section id="slide-org6952299-split">
+
+<p>
+<img src="./media/opensuse_distribution.svg" height="500px"/>
+</p>
+
+</section>
+<section id="slide-org6952299-split">
+
+<p>
+<img src="./media/cncf_distribution.svg" height="500px"/>
+</p>
+</section>
+<section id="slide-org2131bd6">
+<h3 id="org2131bd6">What do Developers want?</h3>
+<aside class="notes">
+<ul>
+<li>stackoverflow 2025 survey, cloud development, AI and Web Dev are the focus</li>
+<li>giant shift towards docker &amp; kubernetes: <a href="https://survey.stackoverflow.co/2025/technology/#3-cloud-development">https://survey.stackoverflow.co/2025/technology/#3-cloud-development</a></li>
+<li>big shift towards github:
+<a href="https://survey.stackoverflow.co/2025/technology/#3-community-platforms">https://survey.stackoverflow.co/2025/technology/#3-community-platforms</a> and
+<a href="https://survey.stackoverflow.co/2025/technology/#3-code-documentation-and-collaboration-tools">https://survey.stackoverflow.co/2025/technology/#3-code-documentation-and-collaboration-tools</a></li>
+<li>lots of movement towards Go, Rust, Typescript:
+<a href="https://survey.stackoverflow.co/2025/technology/#3-programming-scripting-and-markup-languages">https://survey.stackoverflow.co/2025/technology/#3-programming-scripting-and-markup-languages</a></li>
+
+</ul>
+
+</aside>
+
+<p class="fragment (appear)">
+<img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-platform-desire-admire-social.png"/>
+</p>
+
+<p class="fragment (appear)">
+<img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-office-stack-async-desire-admire-social.png"/>
+</p>
+</section>
+<section id="slide-orga2a37d8">
+<h3 id="orga2a37d8">Why don't they want us?</h3>
 <ul>
 <li class="fragment appear">our tooling isn't cool anymore</li>
+<li class="fragment appear">our values aren't cool anymore</li>
 <li class="fragment appear">LLMs are not trained on our tooling</li>
 <li class="fragment appear">building a distribution is hard™</li>
 
 </ul>
 
 <p class="fragment (appear)">
-<img src="./media/linux-distro-build-pipeline.svg" height="500px"/>
+<img src="./media/linux-distro-build-pipeline.svg"/>
 </p>
 
 </section>
-<section id="slide-org72da53b-split">
+<section id="slide-orga2a37d8-split">
 
 <p class="fragment (appear)">
-<img src="./media/from-source-to-image.svg" height="500px"/>
+<img src="./media/from-source-to-image.svg"/>
 </p>
 </section>
-<section id="slide-org754d60b">
-<h3 id="org754d60b"><span class="todo TODO">TODO</span> Omarchy</h3>
+</section>
+<section>
+<section id="slide-orga00a24e">
+<h2 id="orga00a24e">Omarchy</h2>
 <aside class="notes">
 <ul>
-<li>very popular linux spin based on arch</li>
+<li>very popular Linux spin based on Arch</li>
 <li>super opinionated Hyprland setup</li>
 <li>mostly shell scripts</li>
 
@@ -122,37 +185,35 @@ Dan Čermák
 
 </aside>
 
-<p class="fragment (appear)">
-<img src="./media/omarchy.png"/>
-</p>
+<ul>
+<li class="fragment appear">Opinionated Arch Linux spin with Hyprland</li>
+<li class="fragment appear">Community on <i class="fa-brands fa-github"></i> Github &amp; <i class="fa-brands fa-discord"></i> Discord</li>
+
+</ul>
 
 <p class="fragment (appear)">
 <img src="./media/omarchy-github-languages.png"/>
 </p>
-
-<p>
-Community on Github &amp; Discord
-</p>
 </section>
 </section>
 <section>
-<section id="slide-org64475d1">
-<h2 id="org64475d1">Universal Blue</h2>
+<section id="slide-org8a8a9e2">
+<h2 id="org8a8a9e2">Universal Blue</h2>
 <p>
-<img src="./media/ublue.svg"/>
+<img src="./media/ublue.svg" />
 </p>
 
-<blockquote  class="fragment (appear)">
+<blockquote  class="fragment (appear)" data-fragment-index="0">
 <p>
 This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop
 </p>
 </blockquote>
-<p>
-uBlue - Who We Are
+<p data-fragment-index="0" class="fragment (appear)">
+uBlue - <a href="https://universal-blue.org/#who" data-fragment-index="0" class="fragment (appear)">Who We Are</a>
 </p>
 </section>
-<section id="slide-orgff6ced4">
-<h3 id="orgff6ced4">Stack</h3>
+<section id="slide-orgfc93128">
+<h3 id="orgfc93128">Stack</h3>
 <ul>
 <li class="fragment appear"><a href="https://bootc-dev.github.io/bootc/">bootc</a> + <code>Dockerfile</code></li>
 <li class="fragment appear"><i class="fa-brands fa-github"></i> Github</li>
@@ -169,29 +230,23 @@ Community on:
 
 </ul>
 </section>
-<section id="slide-orgc60fbd5">
-<h3 id="orgc60fbd5"><span class="todo TODO">TODO</span> Contributors</h3>
+<section id="slide-org2e5a6e2">
+<h3 id="org2e5a6e2"><span class="todo TODO">TODO</span> Contributors</h3>
 <p class="fragment (appear)">
 <img src="./media/ublue-contributors-2024.png"/>
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgad263e8">
-<h2 id="orgad263e8">Meet Devs where they are</h2>
+<section id="slide-org8048702">
+<h2 id="org8048702">Meet Devs where they are</h2>
 <ul>
 <li class="fragment appear">Developers know Dockerfiles</li>
 
 </ul>
 </section>
-<section id="slide-org95d53f8">
-<h3 id="org95d53f8">What's a package?</h3>
-<p class="fragment (appear)">
-<img src="./media/rpm-package.svg"/>
-</p>
-</section>
-<section id="slide-org6d471b1">
-<h3 id="org6d471b1">The Build Recipe</h3>
+<section id="slide-orgbadf018">
+<h3 id="orgbadf018">The Build Recipe</h3>
 <div class="org-src-container">
 
 <pre  class="fragment (appear)"  ><code class="spec" data-line-numbers='|1-4|5-9|11-13|15-19|21-23|25-28|30-31|33-37|39-51|53-54|'>Summary:	Extensible editor for structured binary data
@@ -251,11 +306,11 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 </code></pre>
 </div>
 </section>
-<section id="slide-org2c52e66">
-<h3 id="org2c52e66">Is it that much different to this?</h3>
+<section id="slide-org4ffe984">
+<h3 id="org4ffe984">Is it that much different to this?</h3>
 <div class="org-src-container">
 
-<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='1-2|5-7|9|11-17|19|21|23-27|29'>ARG VERSION=4.3
+<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='|1-2|5-7|9|11-17|19|21|23-27|29'>ARG VERSION=4.3
 ARG DIST
 FROM fedora-rpm-buildroot:${DIST} as buildrequires
 
@@ -287,8 +342,8 @@ COPY --from=builder /usr/local/bin /usr/bin
 </code></pre>
 </div>
 </section>
-<section id="slide-orge69ab22">
-<h3 id="orge69ab22">Introducing: <code>roci</code></h3>
+<section id="slide-org84f8f01">
+<h3 id="org84f8f01">Introducing: <code>roci</code></h3>
 <aside class="notes">
 <p>
 most pressing problems:
@@ -310,8 +365,8 @@ most pressing problems:
 <img src="./media/roci-build.svg"/>
 </p>
 </section>
-<section id="slide-org1b52cb7">
-<h3 id="org1b52cb7">Issues to tackle</h3>
+<section id="slide-org1133cc9">
+<h3 id="org1133cc9">Issues to tackle</h3>
 <aside class="notes">
 <ul>
 <li>reproducible builds: kinda important, should be mostly doable by setting <code>SOURCE_DATE_EPOCH</code> 🤞</li>
@@ -328,29 +383,80 @@ most pressing problems:
 
 </ul>
 </section>
-<section id="slide-org8195d9a">
-<h4 id="org8195d9a">Let's talk about macros</h4>
+<section id="slide-org67b8d84">
+<h4 id="org67b8d84">Let's talk about macros</h4>
 </section>
-<section id="slide-org55825d8">
-<h3 id="org55825d8">What do we gain</h3>
+<section id="slide-org7b4f91e">
+<h3 id="org7b4f91e">What do we gain</h3>
 <ul>
 <li class="fragment appear">simplicity</li>
 <li class="fragment appear">builds easier to debug &amp; inspect</li>
 
 </ul>
 </section>
-<section id="slide-org0d98c88">
-<h3 id="org0d98c88">What's an OCI Image</h3>
+<section id="slide-org4842037">
+<h3 id="org4842037">What's a package?</h3>
+<p class="fragment (appear)">
+<img src="./media/rpm-package.svg"/>
+</p>
+</section>
+<section id="slide-orgce59d6f">
+<h3 id="orgce59d6f">What's a OCI Image?</h3>
+<p class="fragment (appear)">
+<img src="./media/oci-image.svg"/>
+</p>
+</section>
+<section id="slide-orgbc4f510">
+<h3 id="orgbc4f510">RPM + OCI</h3>
+<div class="org-src-container">
+
+<pre   ><code class="json" >{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "config": {
+    "mediaType": "application/vnd.oci.image.config.v1+json",
+    "digest": "sha256:b5b2b2c507a0944348e0303114d8d93aaaa081732b86451d9bce1f432a537bc7",
+    "size": 7023
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0",
+      "size": 32654
+    },
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:3c3a4604a545cdc127456d94e421cd355bca5b528f4a9c1905b15da2eb4a4c6b",
+      "size": 16724
+    },
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:ec4b8955958665577945c89419d1af06b5f7636b4ac3da7f12184802ad867736",
+      "size": 73109
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:5b0bcabd1ed22e9fb1310cf6c2dec7cdef19f0ad69efa1f392e94a4333501270",
+    "size": 7682
+  },
+  "annotations": {
+    "com.example.key1": "value1",
+    "com.example.key2": "value2"
+  }
+}
+</code></pre>
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org2dcc6f1">
-<h2 id="org2dcc6f1">Repositories</h2>
+<section id="slide-orgdb9a4a6">
+<h2 id="orgdb9a4a6">Repositories</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgd3f544b">
-<h2 id="orgd3f544b">Questions?</h2>
+<section id="slide-orgdd284ca">
+<h2 id="orgdd284ca">Questions?</h2>
 <p class="fragment (appear)">
 Answers!
 </p>
