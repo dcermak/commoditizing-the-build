@@ -52,55 +52,94 @@ Dan Čermák
 * Where are we?
 
 #+begin_notes
-- our contributor base is aging, look around (ML, chat, etc), it's the same people
+- our contributor base is aging, look around (ML, chat, etc), it's the same people, just getting older
+- so how does our developer cohort look like: let's start with stackoverflow dev
 #+end_notes
 
 # source: https://web.archive.org/web/20250222084312/https://blog.tidelift.com/the-open-source-maintainer-community-is-getting-grayer
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/Tidelift 2024 charts wlogo Fig 12-1.png" height="500px"/>@@
 
-** But why?
+#+REVEAL: split
+
+@@html:<img src="./media/stackoverflow_distribution.svg" height="500px"/>@@
+
+#+REVEAL: split
+
+@@html:<img src="./media/linux_foundation_distribution.svg" height="500px"/>@@
+
+#+REVEAL: split
+
+@@html:<img src="./media/debian_distribution.svg" height="500px"/>@@
+
+#+REVEAL: split
+
+@@html:<img src="./media/opensuse_distribution.svg" height="500px"/>@@
+
+#+REVEAL: split
+
+@@html:<img src="./media/cncf_distribution.svg" height="500px"/>@@
+
+** What do Developers want?
+
+#+begin_notes
+- stackoverflow 2025 survey, cloud development, AI and Web Dev are the focus
+- giant shift towards docker & kubernetes: https://survey.stackoverflow.co/2025/technology/#3-cloud-development
+- big shift towards github:
+  https://survey.stackoverflow.co/2025/technology/#3-community-platforms and
+  https://survey.stackoverflow.co/2025/technology/#3-code-documentation-and-collaboration-tools
+- lots of movement towards Go, Rust, Typescript:
+  https://survey.stackoverflow.co/2025/technology/#3-programming-scripting-and-markup-languages
+#+end_notes
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-platform-desire-admire-social.png"/>@@
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-office-stack-async-desire-admire-social.png"/>@@
+
+** Why don't they want us?
 
 #+ATTR_REVEAL: :frag (appear)
 - our tooling isn't cool anymore
+- our values aren't cool anymore
 - LLMs are not trained on our tooling
 - building a distribution is hard™
 
 #+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/linux-distro-build-pipeline.svg" height="500px"/>@@
+@@html:<img src="./media/linux-distro-build-pipeline.svg"/>@@
 
 #+REVEAL: split
 
 #+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/from-source-to-image.svg" height="500px"/>@@
+@@html:<img src="./media/from-source-to-image.svg"/>@@
 
-** TODO Omarchy
+* Omarchy
 
 #+begin_notes
-- very popular linux spin based on arch
+- very popular Linux spin based on Arch
 - super opinionated Hyprland setup
 - mostly shell scripts
 \rightarrow too simple for a general purpose distribution
 #+end_notes
 
 #+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/omarchy.png"/>@@
+- Opinionated Arch Linux spin with Hyprland
+- Community on @@html:<i class="fa-brands fa-github"></i>@@ Github & @@html:<i class="fa-brands fa-discord"></i>@@ Discord
 
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/omarchy-github-languages.png"/>@@
 
-Community on Github & Discord
-
 * Universal Blue
 
-@@html:<img src="./media/ublue.svg"/>@@
+@@html:<img src="./media/ublue.svg" />@@
 
-# from https://universal-blue.org/#who
-#+ATTR_REVEAL: :frag (appear)
+#+ATTR_REVEAL: :frag (appear) :frag_idx 0
 #+begin_quote
 This is a tool that allows cloud infrastructure people to use their skills to help the Linux desktop
 #+end_quote
-uBlue - Who We Are
+#+ATTR_REVEAL: :frag (appear) :frag_idx 0
+uBlue - [[https://universal-blue.org/#who][Who We Are]]
 
 ** Stack
 
@@ -125,11 +164,6 @@ Community on:
 
 #+ATTR_REVEAL: :frag (appear)
 - Developers know Dockerfiles
-
-** What's a package?
-
-#+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/rpm-package.svg"/>@@
 
 ** The Build Recipe
 
@@ -193,7 +227,7 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 
 ** Is it that much different to this?
 
-#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='1-2|5-7|9|11-17|19|21|23-27|29'
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1-2|5-7|9|11-17|19|21|23-27|29'
 #+begin_src Dockerfile
 ARG VERSION=4.3
 ARG DIST
@@ -261,8 +295,57 @@ most pressing problems:
 - simplicity
 - builds easier to debug & inspect
 
-** What's an OCI Image
+** What's a package?
 
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/rpm-package.svg"/>@@
+
+** What's a OCI Image?
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/oci-image.svg"/>@@
+
+
+** RPM + OCI
+
+# stolen from https://specs.opencontainers.org/image-spec/manifest/ and modified
+#+begin_src json
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "config": {
+    "mediaType": "application/vnd.oci.image.config.v1+json",
+    "digest": "sha256:b5b2b2c507a0944348e0303114d8d93aaaa081732b86451d9bce1f432a537bc7",
+    "size": 7023
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0",
+      "size": 32654
+    },
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:3c3a4604a545cdc127456d94e421cd355bca5b528f4a9c1905b15da2eb4a4c6b",
+      "size": 16724
+    },
+    {
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "digest": "sha256:ec4b8955958665577945c89419d1af06b5f7636b4ac3da7f12184802ad867736",
+      "size": 73109
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:5b0bcabd1ed22e9fb1310cf6c2dec7cdef19f0ad69efa1f392e94a4333501270",
+    "size": 7682
+  },
+  "annotations": {
+    "com.example.key1": "value1",
+    "com.example.key2": "value2"
+  }
+}
+#+end_src
 
 
 * Repositories

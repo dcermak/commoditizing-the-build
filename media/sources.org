@@ -1,0 +1,23 @@
+* Sources
+
+- =stackoverflow-dev-survey-2025-technology-admired-and-desired-office-stack-async-desire-admire-social.png=
+  and
+  =stackoverflow-dev-survey-2025-technology-admired-and-desired-platform-desire-admire-social.png=
+  from the [[https://survey.stackoverflow.co/2025/technology/][stackoverflow developer survey 2025]], data licensed under the
+  [[https://opendatacommons.org/licenses/odbl/][Open Data Commons Open Database License]]
+
+- =Tidelift 2024 charts wlogo Fig 12-1.png= from the [[https://web.archive.org/web/20250222084312/https://blog.tidelift.com/the-open-source-maintainer-community-is-getting-grayer][Tidelift Blog]] (now defunct,
+  thus link to the web archive)
+
+- =ublue-contributors-2024.png= screenshot from
+  https://universal-blue.org/#analytics
+
+- =ublue.svg= logo from https://universal-blue.org/
+
+- =*_distribution.svg= own work via the =create-plots.py= script
+
+- =from-source-to-image.svg=, =linux-distro-build-pipeline.svg=, =roci-build.svg=,
+  =rpm-package.svg=, =oci-image.svg= own work with icons from Fontawesome & VSCode
+  Codicons
+
+- =omarchy-github-languages.png= Screenshot from the [[https://github.com/basecamp/omarchy][Omarchy Github repository]]
