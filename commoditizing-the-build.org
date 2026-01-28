@@ -101,10 +101,10 @@ Dan Čermák
 ** Why don't they want us?
 
 #+ATTR_REVEAL: :frag (appear)
-- our tooling isn't cool anymore
+- our tooling & platforms aren't cool anymore
 - our values aren't cool anymore
-- LLMs are not trained on our tooling
-- building a distribution is hard™
+- 🤖 LLMs are not trained on our tooling
+- building a distribution is hard™ and solved
 
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/linux-distro-build-pipeline.svg"/>@@
@@ -145,8 +145,7 @@ uBlue - [[https://universal-blue.org/#who][Who We Are]]
 
 #+ATTR_REVEAL: :frag (appear)
 - [[https://bootc-dev.github.io/bootc/][bootc]] + ~Dockerfile~
-- @@html:<i class="fa-brands fa-github"></i>@@ Github
-- @@html:<i class="fa-brands fa-github"></i>@@ Github Actions
+- @@html:<i class="fa-brands fa-github"></i>@@ Github & Github Actions
 
 #+ATTR_REVEAL: :frag (appear)
 Community on:
@@ -160,10 +159,17 @@ Community on:
 @@html:<img src="./media/ublue-contributors-2024.png"/>@@
 
 
-* Meet Devs where they are
+* Take Away
+
+Developers like:
+#+ATTR_REVEAL: :frag (appear)
+- @@html:<i class="fa-brands fa-github"></i>@@ Github
+- @@html:<i class="fa-brands fa-discord"></i>@@ Discord
+- opinionated distributions
+- their tooling (Bash + Docker @@html:<i class="fa-brands fa-docker"></i>@@)
 
 #+ATTR_REVEAL: :frag (appear)
-- Developers know Dockerfiles
+=> Let's use more container tooling
 
 ** The Build Recipe
 
@@ -227,7 +233,7 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 
 ** Is it that much different to this?
 
-#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1-2|5-7|9|11-17|19|21|23-27|29'
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1-3|5-7|9|11-17|19|21|23-27|29'
 #+begin_src Dockerfile
 ARG VERSION=4.3
 ARG DIST
@@ -260,19 +266,24 @@ LABEL org.opencontainers.image.licenses="GPL-3.0-or-later AND GFDL-1.3-no-invari
 COPY --from=builder /usr/local/bin /usr/bin
 #+end_src
 
-** Introducing: =roci=
+** Introducing: @@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][=dcermak/roci=]]
 
 #+begin_notes
 most pressing problems:
 - network isolation, actually kinda easy to solve, via multistage builds
 - AutoReqProv: rpm's dependency/provides generators. Absolutely required if you don't want packaging to suck. Solved by running =rpmdeps=
-- 
+-
 #+end_notes
 
-@@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][dcermak/roci]]
+#+ATTR_REVEAL: :frag (appear)
+opinionated tool to build rpms from a =Dockerfile=
 
 #+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/roci-build.svg"/>@@
+- sections \Rightarrow stages
+- =%files= \Rightarrow =COPY --from=builder=
+- macros \Rightarrow build arguments, scripts, ENV variables
+- Preamble \Rightarrow =LABEL= + config file
+- =mock= / =obs-build= \Rightarrow =buildah=
 
 ** Issues to tackle
 
@@ -282,14 +293,47 @@ most pressing problems:
 #+end_notes
 
 #+ATTR_REVEAL: :frag (appear)
+- dependency generation (=AutoReqProv=)
 - reproducible builds
 - debuginfo
+- changelogs
 - macros
+- file lists
 
-*** Let's talk about macros
+#+REVEAL: split
 
+@@html:<img src="./media/roci-build.svg"/>@@
 
-** What do we gain
+** Let's talk about macros
+
+#+ATTR_REVEAL: :frag (appear)
+- Turing complete m4 & cpp inspired language
+- embedded Lua interpreter & shell expansion
+- recursive text expansion
+
+#+ATTR_REVEAL: :frag (appear)
+Typical usage:
+#+ATTR_REVEAL: :frag (appear)
+- variables: =%build_cflags=
+- conditionals: =%if %cond %endif=
+- "functions": =%pytest=
+- sections: =%prep=
+
+#+ATTR_REVEAL: :frag (appear)
+Maybe we should get rid of them?
+
+** Filelists
+
+#+begin_src spec
+%files -f my-list.txt
+%{_bindir}/%{name}
+%config %{_sysconfdir}/%{name}.defaults
+%config(noreplace) %{_sysconfdir}/%{name}
+%doc README
+%license COPYING
+#+end_src
+
+** COMMENT What do we gain
 
 #+ATTR_REVEAL: :frag (appear)
 - simplicity
@@ -308,13 +352,19 @@ most pressing problems:
 
 ** RPM + OCI
 
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/roci-build-to-oci.svg"/>@@
+
+
 # stolen from https://specs.opencontainers.org/image-spec/manifest/ and modified
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|3-4|5-9|10-16|17-21|'
 #+begin_src json
 {
   "schemaVersion": 2,
   "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.rpm.package.v7",
   "config": {
-    "mediaType": "application/vnd.oci.image.config.v1+json",
+    "mediaType": "application/vnd.rpm.package.header.v1+json",
     "digest": "sha256:b5b2b2c507a0944348e0303114d8d93aaaa081732b86451d9bce1f432a537bc7",
     "size": 7023
   },
@@ -323,26 +373,12 @@ most pressing problems:
       "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
       "digest": "sha256:9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0",
       "size": 32654
-    },
-    {
-      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
-      "digest": "sha256:3c3a4604a545cdc127456d94e421cd355bca5b528f4a9c1905b15da2eb4a4c6b",
-      "size": 16724
-    },
-    {
-      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
-      "digest": "sha256:ec4b8955958665577945c89419d1af06b5f7636b4ac3da7f12184802ad867736",
-      "size": 73109
     }
   ],
   "subject": {
     "mediaType": "application/vnd.oci.image.manifest.v1+json",
     "digest": "sha256:5b0bcabd1ed22e9fb1310cf6c2dec7cdef19f0ad69efa1f392e94a4333501270",
     "size": 7682
-  },
-  "annotations": {
-    "com.example.key1": "value1",
-    "com.example.key2": "value2"
   }
 }
 #+end_src
