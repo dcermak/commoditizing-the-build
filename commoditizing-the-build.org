@@ -383,11 +383,65 @@ Maybe we should get rid of them?
 }
 #+end_src
 
+* RPM-MD Repositories
 
-* Repositories
+#+begin_notes
+- metadata live in =repodata/= subdir (by convention, only repomd.xml must be there)
+- repomd.xml: only location + checksum to the other files:
+- primary.xml: has links to all rpms + requires and some provides
+- filelist.xml: list of all files per rpm (useful for installing binaries by path)
+- other.xml: 
+#+end_notes
+
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|10|7-9|9|2-5|'
+#+begin_src txt
+└── os
+    ├── Packages
+    │   └── 0
+    │       ├── 0ad-0.27.1-4.fc43.x86_64.rpm
+    │       └── 0ad-data-0.27.1-2.fc43.noarch.rpm
+    └── repodata
+        ├── <checksum>-filelist.xml.zck
+        ├── <checksum>-other.xml.zck
+        ├── <checksum>-primary.xml.zck
+        └── repomd.xml
+#+end_src
+
+#+REVEAL: split
+=primary.xml=
+
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|3-25|4-9|10-24|14-17|18-22|'
+#+begin_src xml
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://linux.duke.edu/metadata/common" xmlns:rpm="http://linux.duke.edu/metadata/rpm" packages="77664">
+<package type="rpm">
+  <name>0ad</name>
+  <arch>x86_64</arch>
+  <version epoch="0" ver="0.27.1" rel="4.fc43"/>
+  <checksum type="sha256" pkgid="YES">3f2334239f14e388571e001bbc966db7f23ad04583c5bbd2156fa1cf71f55add</checksum>
+  <!-- snip -->
+  <location href="Packages/0/0ad-0.27.1-4.fc43.x86_64.rpm"/>
+  <format>
+    <!-- snip -->
+    <rpm:sourcerpm>0ad-0.27.1-4.fc43.src.rpm</rpm:sourcerpm>
+    <rpm:header-range start="29152" end="67261"/>
+    <rpm:provides>
+      <rpm:entry name="0ad" flags="EQ" epoch="0" ver="0.27.1" rel="4.fc43"/>
+      <!-- snip -->
+    </rpm:provides>
+    <rpm:requires>
+      <rpm:entry name="/usr/bin/sh"/>
+      <rpm:entry name="0ad-data" flags="EQ" epoch="0" ver="0.27.1"/>
+      <!-- and more -->
+    </rpm:requires>
+    <file>/usr/bin/0ad</file>
+  </format>
+</package>
+#+end_src
 
 #+ATTR_REVEAL: :frag (appear)
-
+- repomd.xml
+- files
 
 * Questions?
 
