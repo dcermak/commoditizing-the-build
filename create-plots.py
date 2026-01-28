@@ -272,7 +272,7 @@ line3 = ax3.plot(
     label="Stack Overflow (2021)",
     zorder=5,
 )
-ax3.set_title("Linux Foundation Survey 2021", fontweight="bold", fontsize=14)
+ax3.set_title("Linux Foundation DEI Survey 2021", fontweight="bold", fontsize=14)
 ax3.set_ylabel("Percentage (%)", fontsize=12)
 ax3.set_xlabel("Age Range", fontsize=12)
 ax3.set_xlim(10, 80)
@@ -370,7 +370,7 @@ line5 = ax5.plot(
     label="Stack Overflow (2025)",
     zorder=5,
 )
-ax5.set_title("CNCF Age Distribution", fontweight="bold", fontsize=14)
+ax5.set_title("CNCF: State of Cloud Native Development (2025)", fontweight="bold", fontsize=14)
 ax5.set_ylabel("Percentage (%)", fontsize=12)
 ax5.set_xlabel("Age Range", fontsize=12)
 ax5.set_xlim(10, 75)
