@@ -42,8 +42,8 @@ CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-comm
  <script type="text/javascript">hljs.registerLanguage('rpm-specfile', window.hljsDefineRpmSpecfile); hljs.initHighlightingOnLoad(); </script>
 </p>
 <section>
-<section id="slide-org086817e">
-<h2 id="org086817e">who -u</h2>
+<section id="slide-org4c06a13">
+<h2 id="org4c06a13">who -u</h2>
 <p>
 Dan Čermák
 </p>
@@ -66,15 +66,20 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-org4971a25">
-<h2 id="org4971a25">outline</h2>
+<section id="slide-org0087891">
+<h2 id="org0087891">Outline</h2>
+<ul>
+<li><a href="#/slide-org77080a0">Where are we?</a></li>
+<li><a href="#/slide-org5620496">Newcomers</a></li>
+<li><a href="#/slide-orgc03175a">Rethinking the Build</a></li>
+<li><a href="#/slide-orgf6643fa">RPM-MD Repositories</a></li>
 
-
+</ul>
 </section>
 </section>
 <section>
-<section id="slide-org4691172">
-<h2 id="org4691172">Where are we?</h2>
+<section id="slide-org77080a0">
+<h2 id="org77080a0">Where are we?</h2>
 <aside class="notes">
 <ul>
 <li>our contributor base is aging, look around (ML, chat, etc), it's the same people, just getting older</li>
@@ -89,42 +94,42 @@ Dan Čermák
 </p>
 
 </section>
-<section id="slide-org4691172-split">
+<section id="slide-org77080a0-split">
 
 <p>
 <img src="./media/stackoverflow_distribution.svg" height="500px"/>
 </p>
 
 </section>
-<section id="slide-org4691172-split">
+<section id="slide-org77080a0-split">
 
 <p>
 <img src="./media/linux_foundation_distribution.svg" height="500px"/>
 </p>
 
 </section>
-<section id="slide-org4691172-split">
+<section id="slide-org77080a0-split">
 
 <p>
 <img src="./media/debian_distribution.svg" height="500px"/>
 </p>
 
 </section>
-<section id="slide-org4691172-split">
+<section id="slide-org77080a0-split">
 
 <p>
 <img src="./media/opensuse_distribution.svg" height="500px"/>
 </p>
 
 </section>
-<section id="slide-org4691172-split">
+<section id="slide-org77080a0-split">
 
 <p>
 <img src="./media/cncf_distribution.svg" height="500px"/>
 </p>
 </section>
-<section id="slide-org4beb9a0">
-<h3 id="org4beb9a0">What do Developers want?</h3>
+<section id="slide-orgc0299b3">
+<h3 id="orgc0299b3">What do Developers want?</h3>
 <aside class="notes">
 <ul>
 <li>stackoverflow 2025 survey, cloud development, AI and Web Dev are the focus</li>
@@ -147,8 +152,8 @@ Dan Čermák
 <img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-office-stack-async-desire-admire-social.png"/>
 </p>
 </section>
-<section id="slide-org50f8291">
-<h3 id="org50f8291">Why don't they want us?</h3>
+<section id="slide-orgdaa6704">
+<h3 id="orgdaa6704">Why aren't we desired?</h3>
 <ul>
 <li class="fragment appear">our tooling &amp; platforms aren't cool anymore</li>
 <li class="fragment appear">our values aren't cool anymore</li>
@@ -162,7 +167,7 @@ Dan Čermák
 </p>
 
 </section>
-<section id="slide-org50f8291-split">
+<section id="slide-orgdaa6704-split">
 
 <p class="fragment (appear)">
 <img src="./media/from-source-to-image.svg"/>
@@ -170,8 +175,8 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-orgdddd7a5">
-<h2 id="orgdddd7a5">Omarchy</h2>
+<section id="slide-org5620496">
+<h2 id="org5620496">Omarchy</h2>
 <aside class="notes">
 <ul>
 <li>very popular Linux spin based on Arch</li>
@@ -197,8 +202,8 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-orgf60d574">
-<h2 id="orgf60d574">Universal Blue</h2>
+<section id="slide-orgc9efe27">
+<h2 id="orgc9efe27">Universal Blue</h2>
 <p>
 <img src="./media/ublue.svg" />
 </p>
@@ -212,33 +217,26 @@ This is a tool that allows cloud infrastructure people to use their skills to he
 uBlue - <a href="https://universal-blue.org/#who" data-fragment-index="0" class="fragment (appear)">Who We Are</a>
 </p>
 </section>
-<section id="slide-org862d3bb">
-<h3 id="org862d3bb">Stack</h3>
+<section id="slide-org6ea108c">
+<h3 id="org6ea108c">Stack</h3>
 <ul>
 <li class="fragment appear"><a href="https://bootc-dev.github.io/bootc/">bootc</a> + <code>Dockerfile</code></li>
 <li class="fragment appear"><i class="fa-brands fa-github"></i> Github &amp; Github Actions</li>
-
-</ul>
-
-<p class="fragment (appear)">
-Community on:
-</p>
-<ul>
-<li class="fragment appear"><i class="fa-brands fa-discord"></i> Discord</li>
-<li class="fragment appear"><i class="fa-brands fa-discourse"></i> Discourse</li>
+<li class="fragment appear">Community on <i class="fa-brands fa-discord"></i> Discord and
+<i class="fa-brands fa-discourse"></i> Discourse</li>
 
 </ul>
 </section>
-<section id="slide-orge28afe7">
-<h3 id="orge28afe7"><span class="todo TODO">TODO</span> Contributors</h3>
+<section id="slide-org6690a43">
+<h3 id="org6690a43"><span class="todo TODO">TODO</span> Contributors</h3>
 <p class="fragment (appear)">
 <img src="./media/ublue-contributors-2024.png"/>
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgd20c743">
-<h2 id="orgd20c743">Take Away</h2>
+<section id="slide-orgb686c92">
+<h2 id="orgb686c92">Take Away</h2>
 <p>
 Developers like:
 </p>
@@ -251,11 +249,11 @@ Developers like:
 </ul>
 
 <p class="fragment (appear)">
-=&gt; Let's use more container tooling
+Can we use more container tooling?
 </p>
 </section>
-<section id="slide-org0b1ea28">
-<h3 id="org0b1ea28">The Build Recipe</h3>
+<section id="slide-orgc03175a">
+<h3 id="orgc03175a">The Build Recipe</h3>
 <div class="org-src-container">
 
 <pre  class="fragment (appear)"  ><code class="spec" data-line-numbers='|1-4|5-9|11-13|15-19|21-23|25-28|30-31|33-37|39-51|53-54|'>Summary:	Extensible editor for structured binary data
@@ -315,11 +313,11 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 </code></pre>
 </div>
 </section>
-<section id="slide-orgafe73f0">
-<h3 id="orgafe73f0">Is it that much different to this?</h3>
+<section id="slide-org56d15ec">
+<h3 id="org56d15ec">Is it that much different to this?</h3>
 <div class="org-src-container">
 
-<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='|1-3|5-7|9|11-17|19|21|23-27|29'>ARG VERSION=4.3
+<pre  class="fragment (appear)"  ><code class="Dockerfile" data-line-numbers='|1-3|5-7|9|11-17|19|21|23-27|29|'>ARG VERSION=4.3
 ARG DIST
 FROM fedora-rpm-buildroot:${DIST} as buildrequires
 
@@ -351,8 +349,10 @@ COPY --from=builder /usr/local/bin /usr/bin
 </code></pre>
 </div>
 </section>
-<section id="slide-orgdedfbbe">
-<h3 id="orgdedfbbe">Introducing: <i class="fa-brands fa-github"></i> <a href="https://github.com/dcermak/roci"><code>dcermak/roci</code></a></h3>
+</section>
+<section>
+<section id="slide-org731238f">
+<h2 id="org731238f">Introducing: <i class="fa-brands fa-github"></i> <a href="https://github.com/dcermak/roci"><code>dcermak/roci</code></a></h2>
 <aside class="notes">
 <p>
 most pressing problems:
@@ -367,7 +367,7 @@ most pressing problems:
 </aside>
 
 <p class="fragment (appear)">
-opinionated tool to build rpms from a <code>Dockerfile</code>
+builds rpms from a <code>Dockerfile</code>
 </p>
 
 <ul>
@@ -375,12 +375,13 @@ opinionated tool to build rpms from a <code>Dockerfile</code>
 <li class="fragment appear"><code>%files</code> &rArr; <code>COPY --from=builder</code></li>
 <li class="fragment appear">macros &rArr; build arguments, scripts, ENV variables</li>
 <li class="fragment appear">Preamble &rArr; <code>LABEL</code> + config file</li>
+<li class="fragment appear">scriptlets &rArr; config file</li>
 <li class="fragment appear"><code>mock</code> / <code>obs-build</code> &rArr; <code>buildah</code></li>
 
 </ul>
 </section>
-<section id="slide-org74dd58b">
-<h3 id="org74dd58b">Issues to tackle</h3>
+<section id="slide-org600e8a7">
+<h3 id="org600e8a7">Issues to tackle</h3>
 <aside class="notes">
 <ul>
 <li>reproducible builds: kinda important, should be mostly doable by setting <code>SOURCE_DATE_EPOCH</code> 🤞</li>
@@ -401,14 +402,14 @@ opinionated tool to build rpms from a <code>Dockerfile</code>
 </ul>
 
 </section>
-<section id="slide-org74dd58b-split">
+<section id="slide-org600e8a7-split">
 
 <p>
 <img src="./media/roci-build.svg"/>
 </p>
 </section>
-<section id="slide-org94b303a">
-<h3 id="org94b303a">Let's talk about macros</h3>
+<section id="slide-orgcceaf4a">
+<h3 id="orgcceaf4a">Macros</h3>
 <ul>
 <li class="fragment appear">Turing complete m4 &amp; cpp inspired language</li>
 <li class="fragment appear">embedded Lua interpreter &amp; shell expansion</li>
@@ -426,13 +427,9 @@ Typical usage:
 <li class="fragment appear">sections: <code>%prep</code></li>
 
 </ul>
-
-<p class="fragment (appear)">
-Maybe we should get rid of them?
-</p>
 </section>
-<section id="slide-org2a7cfd9">
-<h3 id="org2a7cfd9">Filelists</h3>
+<section id="slide-org58feec8">
+<h3 id="org58feec8">Filelists</h3>
 <div class="org-src-container">
 
 <pre   ><code class="spec" >%files -f my-list.txt
@@ -444,24 +441,28 @@ Maybe we should get rid of them?
 </code></pre>
 </div>
 </section>
-<section id="slide-org64e8997">
-<h3 id="org64e8997">What's a package?</h3>
+</section>
+<section>
+<section id="slide-org61d5b0e">
+<h2 id="org61d5b0e">What's a package?</h2>
 <p class="fragment (appear)">
 <img src="./media/rpm-package.svg"/>
 </p>
 </section>
-<section id="slide-org410203b">
-<h3 id="org410203b">What's a OCI Image?</h3>
+<section id="slide-org637fbcf">
+<h3 id="org637fbcf">What's a OCI Image?</h3>
 <p class="fragment (appear)">
 <img src="./media/oci-image.svg"/>
 </p>
 </section>
-<section id="slide-org9388afc">
-<h3 id="org9388afc">RPM + OCI</h3>
+<section id="slide-orgf79bfad">
+<h3 id="orgf79bfad">RPM + OCI</h3>
 <p class="fragment (appear)">
 <img src="./media/roci-build-to-oci.svg"/>
 </p>
 
+</section>
+<section id="slide-orgf79bfad-split">
 
 <div class="org-src-container">
 
@@ -492,15 +493,15 @@ Maybe we should get rid of them?
 </section>
 </section>
 <section>
-<section id="slide-org2fba84b">
-<h2 id="org2fba84b">RPM-MD Repositories</h2>
+<section id="slide-orgf6643fa">
+<h2 id="orgf6643fa">RPM-MD Repositories</h2>
 <aside class="notes">
 <ul>
 <li>metadata live in <code>repodata/</code> subdir (by convention, only repomd.xml must be there)</li>
 <li>repomd.xml: only location + checksum to the other files:</li>
 <li>primary.xml: has links to all rpms + requires and some provides</li>
 <li>filelist.xml: list of all files per rpm (useful for installing binaries by path)</li>
-<li>other.xml:</li>
+<li>other.xml: just the package changelog</li>
 
 </ul>
 
@@ -522,7 +523,7 @@ Maybe we should get rid of them?
 </div>
 
 </section>
-<section id="slide-org2fba84b-split">
+<section id="slide-orgf6643fa-split">
 <p>
 <code>primary.xml</code>
 </p>
@@ -565,10 +566,19 @@ Maybe we should get rid of them?
 </section>
 </section>
 <section>
-<section id="slide-org035cce9">
-<h2 id="org035cce9">Questions?</h2>
+<section id="slide-org55d5daf">
+<h2 id="org55d5daf">Call to Action!</h2>
 <p class="fragment (appear)">
-Answers!
+Rethink our tooling to simplify onboarding for the next generation
+</p>
+
+<p>
+ <div style="float:center" data-fragment="2" class="fragment (appear)">
+ <table class="qr-table">
+ <tr><td><img src="./media/qr-roci.svg" height="300px"/></td><td><img src="./media/qr-presentation.svg" height="300px"/></td></tr>
+ <tr><td style="text-align: center;"><i class="fab fa-github"></i> <a href="https://github.com/dcermak/roci">roci</a></td><td><a href="https://github.com/dcermak/commoditizing-the-build">slides</a></td></tr>
+ </table>
+ </div>
 </p>
 </section>
 </section>
