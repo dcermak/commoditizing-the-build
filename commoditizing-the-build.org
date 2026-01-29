@@ -46,8 +46,12 @@ Dan Čermák
 @@html: </div>@@
 
 
-* outline
+* Outline
 
+  - [[Where are we?][Where are we?]]
+  - [[Omarchy][Newcomers]]
+  - [[The Build Recipe][Rethinking the Build]]
+  - [[RPM-MD Repositories][RPM-MD Repositories]]
 
 * Where are we?
 
@@ -98,7 +102,7 @@ Dan Čermák
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="media/stackoverflow-dev-survey-2025-technology-admired-and-desired-office-stack-async-desire-admire-social.png"/>@@
 
-** Why don't they want us?
+** Why aren't we desired?
 
 #+ATTR_REVEAL: :frag (appear)
 - our tooling & platforms aren't cool anymore
@@ -146,12 +150,8 @@ uBlue - [[https://universal-blue.org/#who][Who We Are]]
 #+ATTR_REVEAL: :frag (appear)
 - [[https://bootc-dev.github.io/bootc/][bootc]] + ~Dockerfile~
 - @@html:<i class="fa-brands fa-github"></i>@@ Github & Github Actions
-
-#+ATTR_REVEAL: :frag (appear)
-Community on:
-#+ATTR_REVEAL: :frag (appear)
-- @@html:<i class="fa-brands fa-discord"></i>@@ Discord
-- @@html:<i class="fa-brands fa-discourse"></i>@@ Discourse
+- Community on @@html:<i class="fa-brands fa-discord"></i>@@ Discord and
+  @@html:<i class="fa-brands fa-discourse"></i>@@ Discourse
 
 ** TODO Contributors
 
@@ -169,7 +169,7 @@ Developers like:
 - their tooling (Bash + Docker @@html:<i class="fa-brands fa-docker"></i>@@)
 
 #+ATTR_REVEAL: :frag (appear)
-=> Let's use more container tooling
+Can we use more container tooling?
 
 ** The Build Recipe
 
@@ -233,7 +233,7 @@ rm -f %{buildroot}%{_libdir}/libpoke.la
 
 ** Is it that much different to this?
 
-#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1-3|5-7|9|11-17|19|21|23-27|29'
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1-3|5-7|9|11-17|19|21|23-27|29|'
 #+begin_src Dockerfile
 ARG VERSION=4.3
 ARG DIST
@@ -266,7 +266,7 @@ LABEL org.opencontainers.image.licenses="GPL-3.0-or-later AND GFDL-1.3-no-invari
 COPY --from=builder /usr/local/bin /usr/bin
 #+end_src
 
-** Introducing: @@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][=dcermak/roci=]]
+* Introducing: @@html:<i class="fa-brands fa-github"></i>@@ [[https://github.com/dcermak/roci][=dcermak/roci=]]
 
 #+begin_notes
 most pressing problems:
@@ -276,13 +276,14 @@ most pressing problems:
 #+end_notes
 
 #+ATTR_REVEAL: :frag (appear)
-opinionated tool to build rpms from a =Dockerfile=
+builds rpms from a =Dockerfile=
 
 #+ATTR_REVEAL: :frag (appear)
 - sections \Rightarrow stages
 - =%files= \Rightarrow =COPY --from=builder=
 - macros \Rightarrow build arguments, scripts, ENV variables
 - Preamble \Rightarrow =LABEL= + config file
+- scriptlets \Rightarrow config file
 - =mock= / =obs-build= \Rightarrow =buildah=
 
 ** Issues to tackle
@@ -304,7 +305,7 @@ opinionated tool to build rpms from a =Dockerfile=
 
 @@html:<img src="./media/roci-build.svg"/>@@
 
-** Let's talk about macros
+** Macros
 
 #+ATTR_REVEAL: :frag (appear)
 - Turing complete m4 & cpp inspired language
@@ -318,9 +319,6 @@ Typical usage:
 - conditionals: =%if %cond %endif=
 - "functions": =%pytest=
 - sections: =%prep=
-
-#+ATTR_REVEAL: :frag (appear)
-Maybe we should get rid of them?
 
 ** Filelists
 
@@ -339,7 +337,7 @@ Maybe we should get rid of them?
 - simplicity
 - builds easier to debug & inspect
 
-** What's a package?
+* What's a package?
 
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/rpm-package.svg"/>@@
@@ -355,6 +353,7 @@ Maybe we should get rid of them?
 #+ATTR_REVEAL: :frag (appear)
 @@html:<img src="./media/roci-build-to-oci.svg"/>@@
 
+#+REVEAL: split
 
 # stolen from https://specs.opencontainers.org/image-spec/manifest/ and modified
 #+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|3-4|5-9|10-16|17-21|'
@@ -390,7 +389,7 @@ Maybe we should get rid of them?
 - repomd.xml: only location + checksum to the other files:
 - primary.xml: has links to all rpms + requires and some provides
 - filelist.xml: list of all files per rpm (useful for installing binaries by path)
-- other.xml: 
+- other.xml: just the package changelog
 #+end_notes
 
 #+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|10|7-9|9|2-5|'
