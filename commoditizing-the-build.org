@@ -442,7 +442,16 @@ Typical usage:
 - repomd.xml
 - files
 
-* Questions?
+* Call to Action!
 
 #+ATTR_REVEAL: :frag (appear)
-Answers!
+Rethink our tooling to simplify onboarding for the next generation
+
+@@html: <div style="float:center" data-fragment="2" class="fragment (appear)">@@
+@@html: <table class="qr-table">@@
+@@html: <tr><td><img src="./media/qr-roci.svg" height="300px"/></td><td><img src="./media/qr-presentation.svg" height="300px"/></td></tr>@@
+@@html: <tr><td style="text-align: center;"><i class="fab fa-github"></i> <a href="https://github.com/dcermak/roci">roci</a></td><td><a href="https://github.com/dcermak/commoditizing-the-build">slides</a></td></tr>@@
+@@html: </table>@@
+@@html: </div>@@
+
+#+ATTR_REVEAL: :frag (appear)

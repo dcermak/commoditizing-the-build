@@ -4,6 +4,12 @@
   padding: 0em 0em 0.25em 0.5em;
 }
 
+.qr-table td {
+  text-align: center !important;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+}
+
 .reveal h2 {
   font-size: 60px;
   margin: 0px 0px 50px;
