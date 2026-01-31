@@ -51,7 +51,6 @@ Dan Čermák
   - [[Where are we?][Where are we?]]
   - [[Omarchy][Newcomers]]
   - [[The Build Recipe][Rethinking the Build]]
-  - [[RPM-MD Repositories][RPM-MD Repositories]]
 
 * Where are we?
 
@@ -315,7 +314,6 @@ builds rpms from a =Dockerfile=
 #+ATTR_REVEAL: :frag (appear)
 - Turing complete m4 & cpp inspired language
 - embedded Lua interpreter & shell expansion
-- recursive text expansion
 
 #+ATTR_REVEAL: :frag (appear)
 Typical usage:
@@ -323,11 +321,21 @@ Typical usage:
 - variables: =%build_cflags=
 - conditionals: =%if %cond %endif=
 - "functions": =%pytest=
-- sections: =%prep=
+- sections: =%prep=, =%build=
 - declarative build system & specparts
 
 ** Filelists
 
+#+begin_notes
+- rpm packages must declare what lands in the package \Rightarrow =%files=
+- can be:
+  ordinary file/dir
+   =%config=: replaceable config file
+   =%config(noreplace)=: config file that is not replaced on updates
+   =%doc=, =%license=: get put into special locations
+#+end_notes
+
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|1|2|3-4|5-6|'
 #+begin_src spec
 %files -f my-list.txt
 %{_bindir}/%{name}
@@ -450,6 +458,7 @@ Typical usage:
 - we could theoretically start putting repodata into OCI registries
 - lot of prior work to be found here: https://github.com/rpm-software-management/librepo/pull/323
   and here: https://discussion.fedoraproject.org/t/native-oci-storage-for-dnf/163534/21
+- but the trade offs are big, especially if we loose zchunk compression, we loose a lot and gain too little
 #+end_notes
 
 # adjusted version of
@@ -469,7 +478,7 @@ Typical usage:
     {
       "mediaType": "application/vnd.rpm.md+json",
       "digest": "sha256:e258d248fda94c63753607f7c4494ee0fcbe92f1a76bfdac795c9d84101eb317",
-      "size": 1234
+      "size": 123456789
     }
   ],
   "subject": {
