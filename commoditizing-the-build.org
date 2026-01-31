@@ -307,6 +307,11 @@ builds rpms from a =Dockerfile=
 
 ** Macros
 
+#+begin_notes
+- parser works via recursive text expansion, sadly no AST at any point
+- macros mostly used for vars, conditionals, 
+#+end_notes
+
 #+ATTR_REVEAL: :frag (appear)
 - Turing complete m4 & cpp inspired language
 - embedded Lua interpreter & shell expansion
@@ -319,6 +324,7 @@ Typical usage:
 - conditionals: =%if %cond %endif=
 - "functions": =%pytest=
 - sections: =%prep=
+- declarative build system & specparts
 
 ** Filelists
 
@@ -369,7 +375,7 @@ Typical usage:
   },
   "layers": [
     {
-      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+zstd",
       "digest": "sha256:9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0",
       "size": 32654
     }
