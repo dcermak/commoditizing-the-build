@@ -438,9 +438,42 @@ Typical usage:
 </package>
 #+end_src
 
-#+ATTR_REVEAL: :frag (appear)
-- repomd.xml
-- files
+** RPM-MD in OCI?
+
+#+begin_notes
+- we could theoretically start putting repodata into OCI registries
+- lot of prior work to be found here: https://github.com/rpm-software-management/librepo/pull/323
+  and here: https://discussion.fedoraproject.org/t/native-oci-storage-for-dnf/163534/21
+#+end_notes
+
+# adjusted version of
+# https://specs.opencontainers.org/image-spec/manifest/#guidance-for-an-empty-descriptor
+#+ATTR_REVEAL: :frag (appear) :code_attribs data-line-numbers='|3-4|5-9|10-16|17-21|'
+#+begin_src json
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.rpm.md+json",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.rpm.md+json",
+      "digest": "sha256:e258d248fda94c63753607f7c4494ee0fcbe92f1a76bfdac795c9d84101eb317",
+      "size": 1234
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:5b0bcabd1ed22e9fb1310cf6c2dec7cdef19f0ad69efa1f392e94a4333501270",
+    "size": 7682
+  }
+}
+#+end_src
+
 
 * Call to Action!
 
